@@ -8,7 +8,7 @@
 @import './_variables';
 
 // Import Modules
-
+@import '../_modules/header/header';
 
 // Box sizing partial styles:
 // Apply a natural box layout model to all elements
@@ -29,4 +29,21 @@
   padding: 0.5em 0;
 }
 
+.f-pixel {
+  font-family: $heading-font;
+}
 
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: calc(50vh - 64px);
+  margin-top: 15vh;
+  text-align: center;
+
+  &__cta {
+    display: block;
+    width: 100%;
+  }
+}
