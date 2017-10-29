@@ -2,5 +2,15 @@ mixin header(spec)
   - spec = spec || {}
   - spec.__class = spec.__class || ''
 
-  div(class=spec.__class)&attributes(attributes)
-    p This is an example paragraph for the header module
+  nav.grey.darken-4(role='navigation')
+    .nav-wrapper.container
+      a#logo-container.brand-logo(href='/')
+        img(src='/images/dnd-transparent.png')
+      ul.right.hide-on-med-and-down
+        li
+          a(href='/') Home
+      ul#nav-mobile.side-nav
+        li
+          a(href='/') Home
+      a.button-collapse(href='#' data-activates='nav-mobile')
+        i.material-icons menu

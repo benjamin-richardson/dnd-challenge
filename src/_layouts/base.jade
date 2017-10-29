@@ -1,3 +1,6 @@
+include ../_modules/header/header
+
+
 //- Custom Configuration
 block config
   //- Setup site's base URL to match the "baseUrl" key within `package.json`
@@ -31,6 +34,8 @@ body
   <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
+
+  +header()
   block content
 
   block scripts

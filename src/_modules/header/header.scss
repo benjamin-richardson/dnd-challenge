@@ -1,1 +1,10 @@
 // header styles
+nav .brand-logo {
+  > img {
+    max-height: 56px;
+
+    @media #{$medium-and-up} {
+      max-height: 64px;
+    }
+  }
+}
