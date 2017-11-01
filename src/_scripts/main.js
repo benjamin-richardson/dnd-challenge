@@ -8,6 +8,10 @@ import $ from 'jquery';
 import 'hammerjs';
 import 'materialize-css/dist/js/materialize.js';
 
+import Card from 'card/card';
+
 $(() => {
+
+  new Card();
 
 });
