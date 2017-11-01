@@ -1,1 +1,21 @@
 // card styles
+.card {
+  .card-content {
+    padding: 24px 24px 0 24px;
+  }
+
+  &__main-title {
+    display: flex;
+    justify-content: space-between;
+
+    .card-title {
+      margin-top: 0;
+    }
+
+    .chip {
+      .material-icons {
+        vertical-align: middle;
+      }
+    }
+  }
+}
