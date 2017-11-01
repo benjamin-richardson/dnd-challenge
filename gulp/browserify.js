@@ -26,7 +26,8 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         transform: [
           babelify, // Enable ES6 features
           envify // Sets NODE_ENV for better optimization of npm packages
-        ]
+        ],
+        paths: ['./node_modules','./src/_modules/']
       };
 
       let bundler = browserify(customOpts);
