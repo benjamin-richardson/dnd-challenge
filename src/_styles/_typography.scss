@@ -13,6 +13,7 @@
     font-size: (22 / $base) * 1em;
     font-weight: 400;
     line-height: 1.5;
+    text-transform: uppercase;
     letter-spacing: (50 / 1000) * 1em;
   }
 
@@ -21,10 +22,18 @@
     font-size: (32 / $base) * 1em;
     font-weight: 300;
     line-height: 1.25;
+    text-transform: uppercase;
     letter-spacing: (50 / 1000) * 1em;
   }
 
   &-c {
+    &-xs {
+      font-family: $heading-font;
+      font-size: (10 / $base) * 1em;
+      font-weight: 700;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
     &-s {
       font-family: $body-font;
       font-size: (12 / $base) * 1em;
@@ -65,6 +74,10 @@
 
   // Content styles
   &-c {
+    &-xs {
+      @extend %t-c-xs;
+    }
+
     &-s {
       @extend %t-c-s;
     }
