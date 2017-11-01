@@ -5,7 +5,7 @@ extends _layouts/base
 block content
 
   .container
-    .section
+    section.game-intro
       // Icon Section
       .row
         .col.s12.m6.offset-m3
@@ -15,5 +15,18 @@ block content
               img.responsive-img(src='/images/dndlogo.jpg')
             .intro__cta.f-pixel
               a.waves-effect.waves-light.btn-large.grey.darken-2 Begin your game
+
+
+    section.game-class
+      .row
+        .col.s12.m6.offset-m3
+          .progress
+            .indeterminate
+
+      .row
+        .col.s12.m6.offset-m3
+          h1.t-l
+            | Welcome to your game of Dungeons & Dragons
+
 
 

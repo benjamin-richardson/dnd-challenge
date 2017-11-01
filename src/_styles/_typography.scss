@@ -1,0 +1,40 @@
+%t {
+  &-s {
+    font-family: $heading-font;
+    font-size: (16 / $base) * 1em;
+    font-weight: 400; // Medium
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: (300 / 1000) * 1em;
+  }
+
+  &-m {
+    font-family: $heading-font;
+    font-size: (22 / $base) * 1em;
+    font-weight: 400; // Light
+    line-height: 1.5;
+    letter-spacing: (50 / 1000) * 1em;
+  }
+
+  &-l {
+    font-family: $heading-font;
+    font-size: (32 / $base) * 1em;
+    font-weight: 300; // Light
+    line-height: 1.25;
+    letter-spacing: (50 / 1000) * 1em;
+  }
+}
+
+.t {
+  &-s {
+    @extend %t-s;
+  }
+
+  &-m {
+    @extend %t-m;
+  }
+
+  &-l {
+    @extend %t-l;
+  }
+}
