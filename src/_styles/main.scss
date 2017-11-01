@@ -50,3 +50,27 @@
     width: 100%;
   }
 }
+
+.game-loader {
+  opacity: 0;
+}
+
+.fadeUp {
+  transform: translateY(-25px);
+  opacity: 0;
+
+  transition: transform 400ms ease-out, opacity 400ms ease-out;
+}
+
+.fadeDown {
+  transform: translateY(0);
+  opacity: 1;
+
+  transition: transform 400ms ease-out, opacity 400ms ease-out;
+}
+
+.fadeIn {
+  opacity: 1;
+
+  transition: opacity 400ms ease-out;
+}
