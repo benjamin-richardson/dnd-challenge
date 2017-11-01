@@ -2,7 +2,7 @@
   &-s {
     font-family: $heading-font;
     font-size: (16 / $base) * 1em;
-    font-weight: 400; // Medium
+    font-weight: 400;
     line-height: 1.5;
     text-transform: uppercase;
     letter-spacing: (300 / 1000) * 1em;
@@ -11,7 +11,7 @@
   &-m {
     font-family: $heading-font;
     font-size: (22 / $base) * 1em;
-    font-weight: 400; // Light
+    font-weight: 400;
     line-height: 1.5;
     letter-spacing: (50 / 1000) * 1em;
   }
@@ -19,13 +19,38 @@
   &-l {
     font-family: $heading-font;
     font-size: (32 / $base) * 1em;
-    font-weight: 300; // Light
+    font-weight: 300;
     line-height: 1.25;
     letter-spacing: (50 / 1000) * 1em;
+  }
+
+  &-c {
+    &-s {
+      font-family: $body-font;
+      font-size: (12 / $base) * 1em;
+      font-weight: 700;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    &-m {
+      font-family: $body-font;
+      font-size: (16 / $base) * 1em;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    &-l {
+      font-family: $body-font;
+      font-size: (20 / $base) * 1em;
+      font-weight: 400;
+      line-height: 1.5;
+    }
   }
 }
 
 .t {
+  // Header styles
   &-s {
     @extend %t-s;
   }
@@ -36,5 +61,20 @@
 
   &-l {
     @extend %t-l;
+  }
+
+  // Content styles
+  &-c {
+    &-s {
+      @extend %t-c-s;
+    }
+
+    &-m {
+      @extend %t-c-m;
+    }
+
+    &-l {
+      @extend %t-c-l;
+    }
   }
 }
