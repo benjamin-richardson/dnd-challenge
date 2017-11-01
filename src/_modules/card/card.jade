@@ -70,6 +70,7 @@ mixin card(spec)
 
         if spec.isTemplate === true
           | {{~it.saving_throws :savingThrows:index}}
+
         - each item in spec.data.savingThrows
           .chip=item
 

@@ -8,6 +8,15 @@ export default class GameController {
   constructor() {
     let _self = this;
 
+    // Summary panel room template
+    this.classCardTemplate;
+
+    if(document.getElementById('class-card-template') !== null) {
+      this.classCardTemplate = doT.template(document.getElementById('class-card-template').innerHTML.trim());
+    } else {
+      console.log('Error: Class card template missing');
+    }
+
     this.API_ENDPOINT = $('.js-api').data('api-endpoint');
 
     if(this.API_ENDPOINT === undefined) {
@@ -25,16 +34,20 @@ export default class GameController {
 
       let randomClassUrl = `${API_START}/${CLASS_NUMBER}`;
 
+      // Call API for class content
       $.ajax(_self.getSettings(randomClassUrl)).done((data) => {
         console.log(data);
 
         // Transition in game containers
         $('.game-class').show();
+        $('.game-class__welcome').fadeIn('800');
 
-
-        // Call API for class content
 
         // Set up containers requiring additional API calls first
+        let classCardHtml = _self.classCardTemplate(data);
+
+        $('.game-class__container').html(classCardHtml);
+        $('.game-loader').css('opacity', '0');
 
         // Display first round of content
 

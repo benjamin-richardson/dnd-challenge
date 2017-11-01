@@ -26,13 +26,13 @@ block content
             .indeterminate
 
     section.game-class(style="display: none;")
-      .row(style="display: none;")
+      .row.game-class__welcome(style="display: none;")
         .col.s12.m8.offset-m2
           h1.t-l
             | Welcome to your game of Dungeons & Dragons
 
       .row
-        .col.s12.m8.offset-m2
+        .col.s12.m8.offset-m2.game-class__container
           -
             var data = {}
             var isTemplate = false;
@@ -50,12 +50,9 @@ block content
             data.hp = '{{=it.hit_die}}'
             data.proficiency = ["{{=proficiency.name}}"]
             data.proficiencyChoices = ["{{=proficiencyChoices.name}}"]
-            data.startingItem = ["{{=starting_equipment.url}}"]
+            data.startingItem = ["{{=it.starting_equipment.url}}"]
             data.savingThrows = ["{{=savingThrows.name}}"]
 
+          | <script id="class-card-template" type="text/template">
           +card({"data": data, "isTemplate": isTemplate})
-
-
-
-
-
+          | </script>

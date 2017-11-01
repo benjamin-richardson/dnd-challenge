@@ -34,9 +34,10 @@ $(() => {
 
       $gameLoader.show();
       $gameLoader.addClass('fadeIn');
+
+      window.dnd.emitter.emit('dnd-game-start');
     }, 500);
 
-    window.dnd.emitter.emit('dnd-game-start');
   });
 
 });
