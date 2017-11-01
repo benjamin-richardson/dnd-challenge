@@ -5,7 +5,6 @@ mixin card(spec)
   .card.blue-grey.darken-1(class=spec.__class)&attributes(attributes)
     .card-content.white-text
       h2.card-title.t-l Barbarian
-
       .chip
         i.material-icons
           | flash_on
@@ -14,18 +13,41 @@ mixin card(spec)
       p
         | For some barbarians, rage is a means to an end— that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker’s rage, you thrill in the chaos of battle, heedless of your own health or well-being.
 
-
     .card-content.white-text
       h3.t-m Proficiency
-        span.t-c-xs
-          | (Choose 2)
-      - var proficiency = ["Skill: Animal Handling", "Skill: Athletics", "Skill: Intimidation", "Skill: Nature", "Skill: Perception", "Skill: Survival"]
-      - each item in proficiency
+      - var proficiency = ["Light armor", "Medium armor", "Shields", "Simple weapons", "Martial weapons"];
+
+      ul.collection
+        - each item in proficiency
+          li.collection-item.teal.darken-3=item
+
+      h4.t-s
+        | Choose 2 additional proficiencies
+      - var proficiencyChoices = ["Skill: Animal Handling", "Skill: Athletics", "Skill: Intimidation", "Skill: Nature", "Skill: Perception", "Skill: Survival"]
+      - each item in proficiencyChoices
         .chip=item
 
     .card-content.white-text
-      h3.t-m Proficiency
+      h3.t-m Starting Items
+      - var startingItem = ["Explorer's Pack", "Javelin"]
+      - each item in startingItem
+        .chip=item
+
+      .row
+        .input-field.col.s12
+          input#autocomplete-input.autocomplete(type='text')
+          label(for='autocomplete-input') Choice 1
+
+        .input-field.col.s12
+          input#autocomplete-input.autocomplete(type='text')
+          label(for='autocomplete-input') Choice 2
+
+    .card-content.white-text
+      h3.t-m Saving throws
+      - var savingThrows = ["STR", "CON"]
+      - each item in savingThrows
+        .chip=item
+
 
     .card-action
-      a(href='#') This is a link
-      a(href='#') This is a link
+      a(href='#') Get a new class?
