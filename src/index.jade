@@ -48,6 +48,7 @@ block content
             isTemplate = true;
             data.class = '{{=it.name}}'
             data.hp = '{{=it.hit_die}}'
+            data.subclass = '{{=it.subclasses[0].url}}'
             data.proficiency = ["{{=proficiency.name}}"]
             data.proficiencyChoices = ["{{=proficiencyChoices.name}}"]
             data.startingItem = ["{{=it.starting_equipment.url}}"]

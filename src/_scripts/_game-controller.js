@@ -32,7 +32,7 @@ export default class GameController {
 
     window.dnd.emitter.on('dnd-game-start', function(){
 
-      let randomClassUrl = `${API_START}/${CLASS_NUMBER}`;
+      let randomClassUrl = `${_self.API_ENDPOINT}${API_START}/${CLASS_NUMBER}`;
 
       // Call API for class content
       $.ajax(_self.getSettings(randomClassUrl)).done((data) => {
@@ -42,18 +42,26 @@ export default class GameController {
         $('.game-class').show();
         $('.game-class__welcome').fadeIn('800');
 
-
         // Set up containers requiring additional API calls first
         let classCardHtml = _self.classCardTemplate(data);
 
+        // Display first round of content
         $('.game-class__container').html(classCardHtml);
         $('.game-loader').css('opacity', '0');
 
-        // Display first round of content
-
         // Call off for additional second level items
+        let subclassApi = $('.subclass').data('api-endpoint') || '';
+        $.ajax(_self.getSettings(subclassApi)).done((data) => {
+          // Display second round content
+          $('.subclass').text(data.desc[0]);
+        });
 
-        // Display second round content
+        let startingEquipmentApi = $('.starting-equipment').data('api-endpoint') || '';
+        $.ajax(_self.getSettings(startingEquipmentApi)).done((data) => {
+          // Display second round content
+          console.log('startingEquipmentApi', data);
+
+        });
 
       });
 
@@ -66,9 +74,9 @@ export default class GameController {
     return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
   }
 
-  getSettings(subChannel) {
+  getSettings(apiUrl) {
     return {
-      url: this.API_ENDPOINT + subChannel,
+      url: apiUrl,
       type: 'GET',
       cache: true,
       timeout: 10000,

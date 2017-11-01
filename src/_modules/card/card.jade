@@ -16,7 +16,9 @@ mixin card(spec)
       .section
         h3.t-m
           | Subclass
-        p.flow-text.subclass(data-api-endpoint='')=spec.data.subclass
+        p.flow-text.subclass(data-api-endpoint=(spec.isTemplate === true ? spec.data.subclass : ''))
+          if spec.isTemplate === false
+            | #{spec.data.subclass}
 
     .card-content.white-text
       .divider
@@ -49,7 +51,7 @@ mixin card(spec)
       .divider
       .section
         h3.t-m Starting Items
-        .starting-equipment(data-api-endpoint=(spec.isTemplate == true ? spec.data.startingItem[0] : ''))
+        .starting-equipment(data-api-endpoint=(spec.isTemplate === true ? spec.data.startingItem[0] : ''))
           if spec.isTemplate === false
             - each item in spec.data.startingItem
               .chip=item
