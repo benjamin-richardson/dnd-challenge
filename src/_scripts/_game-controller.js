@@ -7,18 +7,49 @@ import doT from 'doT';
 export default class GameController {
   constructor() {
 
-    // Transition in game containers
+    this.API_ENDPOINT = $('.js-api').data('api-endpoint');
 
-    // Call API for class content
+    if(this.API_ENDPOINT === undefined) {
+      console.error('Error: API endpoint not defined');
+      return;
+    }
 
-    // Set up containers requiring additional API calls first
+    const API_START = 'classes';
 
-    // Display first round of content
+    // Set random class
+    const TOTAL_DND_CLASSES = 12; // Just going to code this value as it donesnt change much
+    this.classNumber = this.getRandomInt(1, TOTAL_DND_CLASSES);
 
-    // Call off for additional second level items
+    window.AD.emitter.on('dnd-game-start', function(){
 
-    // Display second round content
+      // Transition in game containers
 
+      // Call API for class content
 
+      // Set up containers requiring additional API calls first
+
+      // Display first round of content
+
+      // Call off for additional second level items
+
+      // Display second round content
+
+    });
+  }
+
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+  }
+
+  getSettings(subChannel) {
+    return {
+      url: this.API_ENDPOINT,
+      type: 'GET',
+      cache: true,
+      timeout: 10000,
+      dataType: 'json'
+    };
   }
 }
