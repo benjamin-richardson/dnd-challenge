@@ -1,44 +1,41 @@
 mixin card(spec)
   - spec = spec || {}
+  - spec.data = spec.data || {}
   - spec.__class = spec.__class || ''
 
   .card.blue-grey.darken-1(class=spec.__class)&attributes(attributes)
     .card-content.white-text
       .section.card__main-title
-        h2.card-title.t-l Barbarian
+        h2.card-title.t-l=spec.data.class
         .chip
           i.material-icons
             | flash_on
-          | 12HP
+          | #{spec.data.hp}HP
       .divider
       .section
         h3.t-m
           | Subclass
-        p.flow-text
-          | For some barbarians, rage is a means to an end— that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker’s rage, you thrill in the chaos of battle, heedless of your own health or well-being.
+        p.flow-text.subclass(data-api-endpoint='')=spec.data.subclass
 
     .card-content.white-text
       .divider
       .section
         h3.t-m Proficiency
-        - var proficiency = ["Light armor", "Medium armor", "Shields", "Simple weapons", "Martial weapons"];
 
         ul.collection
-          - each item in proficiency
+          - each item in spec.data.proficiency
             li.collection-item.teal.darken-3=item
 
         h4.t-s
           | Choose 2 additional proficiencies
-        - var proficiencyChoices = ["Skill: Animal Handling", "Skill: Athletics", "Skill: Intimidation", "Skill: Nature", "Skill: Perception", "Skill: Survival"]
-        - each item in proficiencyChoices
+        - each item in spec.data.proficiencyChoices
           .chip=item
 
     .card-content.white-text
       .divider
       .section
         h3.t-m Starting Items
-        - var startingItem = ["Explorer's Pack", "Javelin"]
-        - each item in startingItem
+        - each item in spec.data.startingItem
           .chip=item
 
         .row
@@ -54,8 +51,7 @@ mixin card(spec)
       .divider
       .section
         h3.t-m Saving throws
-        - var savingThrows = ["STR", "CON"]
-        - each item in savingThrows
+        - each item in spec.data.savingThrows
           .chip=item
 
 
