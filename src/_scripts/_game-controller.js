@@ -6,6 +6,7 @@ import doT from 'doT';
 
 export default class GameController {
   constructor() {
+    let _self = this;
 
     this.API_ENDPOINT = $('.js-api').data('api-endpoint');
 
@@ -18,21 +19,30 @@ export default class GameController {
 
     // Set random class
     const TOTAL_DND_CLASSES = 12; // Just going to code this value as it donesnt change much
-    this.classNumber = this.getRandomInt(1, TOTAL_DND_CLASSES);
+    const CLASS_NUMBER = this.getRandomInt(1, TOTAL_DND_CLASSES);
 
-    window.AD.emitter.on('dnd-game-start', function(){
+    window.dnd.emitter.on('dnd-game-start', function(){
 
-      // Transition in game containers
+      let randomClassUrl = `${API_START}/${CLASS_NUMBER}`;
 
-      // Call API for class content
+      $.ajax(_self.getSettings(randomClassUrl)).done((data) => {
+        console.log(data);
 
-      // Set up containers requiring additional API calls first
+        // Transition in game containers
+        $('.game-class').show();
 
-      // Display first round of content
 
-      // Call off for additional second level items
+        // Call API for class content
 
-      // Display second round content
+        // Set up containers requiring additional API calls first
+
+        // Display first round of content
+
+        // Call off for additional second level items
+
+        // Display second round content
+
+      });
 
     });
   }
@@ -45,7 +55,7 @@ export default class GameController {
 
   getSettings(subChannel) {
     return {
-      url: this.API_ENDPOINT,
+      url: this.API_ENDPOINT + subChannel,
       type: 'GET',
       cache: true,
       timeout: 10000,
