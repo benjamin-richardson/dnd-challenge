@@ -9,6 +9,7 @@ import 'hammerjs';
 import 'materialize-css/dist/js/materialize.js';
 import emitter from 'tiny-emitter/instance';
 
+import GameController from './_game-controller';
 import Card from 'card/card';
 
 $(() => {
@@ -18,6 +19,10 @@ $(() => {
   window.dnd.emitter = emitter;
 
   new Card();
+
+  if($('.game-class').length) {
+    new GameController();
+  }
 
   $('.js-start-game').on('click', function(){
     let $gameIntro = $('.game-intro'),
@@ -29,7 +34,7 @@ $(() => {
 
       $gameLoader.show();
       $gameLoader.addClass('fadeIn');
-    },500);
+    }, 500);
 
     window.AD.emitter.emit('dnd-game-start');
   });
