@@ -31,19 +31,29 @@ block content
           h1.t-l
             | Welcome to your game of Dungeons & Dragons
 
-      .row(style="display: none;")
+      .row
         .col.s12.m8.offset-m2
           -
             var data = {}
-            data.class = 'Barbarian'
-            data.hp = '11'
-            data.subclass = '...'
-            data.proficiency = ["Light armor", "Medium armor", "Shields", "Simple weapons", "Martial weapons"]
-            data.proficiencyChoices = ["Skill: Animal Handling", "Skill: Athletics", "Skill: Intimidation", "Skill: Nature", "Skill: Perception", "Skill: Survival"]
-            data.startingItem = ["Explorer's Pack", "Javelin"]
-            data.savingThrows = ["STR", "CON"]
+            var isTemplate = false;
 
-          +card({"data": data})
+            // data.class = 'Barbarian'
+            // data.hp = '11'
+            // data.subclass = '...'
+            // data.proficiency = ["Light armor", "Medium armor", "Shields", "Simple weapons", "Martial weapons"]
+            // data.proficiencyChoices = ["Skill: Animal Handling", "Skill: Athletics", "Skill: Intimidation", "Skill: Nature", "Skill: Perception", "Skill: Survival"]
+            // data.startingItem = ["Explorer's Pack", "Javelin"]
+            // data.savingThrows = ["STR", "CON"]
+
+            isTemplate = true;
+            data.class = '{{=it.name}}'
+            data.hp = '{{=it.hit_die}}'
+            data.proficiency = ["{{=proficiency.name}}"]
+            data.proficiencyChoices = ["{{=proficiencyChoices.name}}"]
+            data.startingItem = ["{{=starting_equipment.url}}"]
+            data.savingThrows = ["{{=savingThrows.name}}"]
+
+          +card({"data": data, "isTemplate": isTemplate})
 
 
 

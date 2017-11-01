@@ -1,6 +1,7 @@
 mixin card(spec)
   - spec = spec || {}
   - spec.data = spec.data || {}
+  - spec.isTemplate = spec.isTemplate || false
   - spec.__class = spec.__class || ''
 
   .card.blue-grey.darken-1(class=spec.__class)&attributes(attributes)
@@ -23,20 +24,35 @@ mixin card(spec)
         h3.t-m Proficiency
 
         ul.collection
+          if spec.isTemplate === true
+            | {{~it.proficiencies :proficiency:index}}
+
           - each item in spec.data.proficiency
             li.collection-item.teal.darken-3=item
 
+          if spec.isTemplate === true
+            | {{~}}
+
         h4.t-s
           | Choose 2 additional proficiencies
+
+        if spec.isTemplate === true
+          | {{~it.proficiency_choices[0].from :proficiencyChoices:index}}
+
         - each item in spec.data.proficiencyChoices
           .chip=item
+
+        if spec.isTemplate === true
+          | {{~}}
 
     .card-content.white-text
       .divider
       .section
         h3.t-m Starting Items
-        - each item in spec.data.startingItem
-          .chip=item
+        .starting-equipment(data-api-endpoint=(spec.isTemplate == true ? spec.data.startingItem[0] : ''))
+          if spec.isTemplate === false
+            - each item in spec.data.startingItem
+              .chip=item
 
         .row
           .input-field.col.s12
@@ -51,9 +67,14 @@ mixin card(spec)
       .divider
       .section
         h3.t-m Saving throws
+
+        if spec.isTemplate === true
+          | {{~it.saving_throws :savingThrows:index}}
         - each item in spec.data.savingThrows
           .chip=item
 
+        if spec.isTemplate === true
+          | {{~}}
 
     .card-action
       a.waves-effect.waves-light.btn-large
