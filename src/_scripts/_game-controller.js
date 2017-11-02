@@ -32,11 +32,8 @@ export default class GameController {
 
     });
 
-    window.dnd.emitter.on('dnd-choice-made', function(choiceId){
-
-      let dndClassUrl = `${_self.API_ENDPOINT}${API_START}/${choiceId}`;
-      _self.getShowClass(dndClassUrl);
-
+    window.dnd.emitter.on('dnd-choice-made', function(choiceUrl){
+      _self.getShowClass(choiceUrl);
     });
   }
 
@@ -96,7 +93,7 @@ export default class GameController {
       let dndClassChoiceHtml = '';
 
       data.results.forEach(function(dndClass){
-        dndClassChoiceHtml += `<a class="chip" data-api-endpoint="${dndClass.url}">${dndClass.name}</a>`;
+        dndClassChoiceHtml += `<a class="game-classes__item chip" data-api-endpoint="${dndClass.url}">${dndClass.name}</a>`;
       });
 
       let $gameContainer = $('.game-classes__container');

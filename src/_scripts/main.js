@@ -42,18 +42,20 @@ $(() => {
 
   });
 
-  $('.game-classes').on('click', '.game-classes__item', function(){
+  $('.game-classes').on('click', '.game-classes__item', function(item){
     let $gameClasses = $('.game-classes'),
       $gameLoader = $('.game-loader');
 
+    $gameLoader.css('opacity', '1');
     $gameClasses.addClass('fadeUp');
+
     setTimeout(function(){
       $gameClasses.hide();
 
       $gameLoader.show();
       $gameLoader.addClass('fadeIn');
 
-      window.dnd.emitter.emit('dnd-choice-made', $(this).data('id'));
+      window.dnd.emitter.emit('dnd-choice-made', $(item.currentTarget).data('api-endpoint'));
     }, 500);
   });
 
