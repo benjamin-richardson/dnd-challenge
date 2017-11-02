@@ -10,7 +10,7 @@ import 'materialize-css/dist/js/materialize.js';
 import emitter from 'tiny-emitter/instance';
 
 import GameController from './_game-controller';
-import Card from 'card/card';
+// import Card from 'card/card';
 
 $(() => {
 
@@ -18,7 +18,8 @@ $(() => {
   window.dnd = {};
   window.dnd.emitter = emitter;
 
-  new Card();
+  // Initialise in controller
+  // new Card();
 
   if($('.game-class').length) {
     new GameController();

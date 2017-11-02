@@ -91,10 +91,11 @@ mixin card(spec)
 
 mixin cardInput(spec)
   - spec = spec || {}
-  - spec.id = spec.id || 'item-input'
-  - spec.index = spec.index || '1'
+  - spec.data = spec.data || {}
+  - spec.data.id = spec.data.id || 'item-input'
+  - spec.data.index = spec.data.index || '1'
 
   .input-field.col.s12
-    input.autocomplete(id=`${spec.id}-${spec.index}`, type='text')
-    label(for=`${spec.id}-${spec.index}`)=`Choice ${spec.index}`
+    input.autocomplete(id=`${spec.data.id}-${spec.data.index}`, type='text')
+    label(for=`${spec.data.id}-${spec.data.index}`)=`Choice ${spec.data.index}`
 

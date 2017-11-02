@@ -55,20 +55,21 @@ block content
             data.savingThrows = ["{{=savingThrows.name}}"]
 
           if isTemplate === true
-            | '<script id="class-card-template" type="text/template">'
+            | <script id="class-card-template" type="text/template">
           +card({"data": data, "isTemplate": isTemplate})
           if isTemplate === true
-            | '</script>'
+            | </script>
+
 
           -
             data = {}
 
             data.id = 'starting-item-input'
-            data.index = '{{=index}}'
+            data.index = '{{=it.index}}'
 
           if isTemplate === true
-            | '<script id="class-card-select-template" type="text/template">'
+            | <script id="class-card-select-template" type="text/template">
 
             +cardInput({"data": data})
 
-            | '</script>'
+            | </script>

@@ -4,9 +4,13 @@ import $ from 'jquery';
 import List from 'list.js';
 import doT from 'doT';
 
+import Card from 'card/card';
+
 export default class GameController {
   constructor() {
     let _self = this;
+
+    this.cardClass = new Card();
 
     // Card template
     this.classCardTemplate;
@@ -79,7 +83,22 @@ export default class GameController {
           $('.starting-equipment').prepend(defaultStartingEquipmentHtml);
 
 
+          let startingEquipmentChoices = '',
+            choiceInitValues = [],
+            dropDownData = [];
+
           // Add in choices
+          for(let i = 1; i <= data.choices_to_make; i++) {
+            startingEquipmentChoices += _self.classCardSelectTemplate({'index': String(i)});
+
+            if(data[`choice_${i}`] !== undefined) {
+              dropDownData = data[`choice_${i}`].reduce(function(concatArrays, choices) {
+                return choices.from.concat(concatArrays);
+              },[]);
+            }
+
+            choiceInitValues.push(dropDownData);
+          }
 
         });
 
