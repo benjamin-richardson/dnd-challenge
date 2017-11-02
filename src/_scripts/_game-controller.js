@@ -8,13 +8,22 @@ export default class GameController {
   constructor() {
     let _self = this;
 
-    // Summary panel room template
+    // Card template
     this.classCardTemplate;
 
     if(document.getElementById('class-card-template') !== null) {
       this.classCardTemplate = doT.template(document.getElementById('class-card-template').innerHTML.trim());
     } else {
       console.log('Error: Class card template missing');
+    }
+
+    // Card select template
+    this.classCardSelectTemplate;
+
+    if(document.getElementById('class-card-select-template') !== null) {
+      this.classCardSelectTemplate = doT.template(document.getElementById('class-card-select-template').innerHTML.trim());
+    } else {
+      console.log('Error: Class card select template missing');
     }
 
     this.API_ENDPOINT = $('.js-api').data('api-endpoint');
