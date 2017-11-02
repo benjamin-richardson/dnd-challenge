@@ -36,9 +36,25 @@ $(() => {
       $gameLoader.show();
       $gameLoader.addClass('fadeIn');
 
-      window.dnd.emitter.emit('dnd-game-start');
+      // window.dnd.emitter.emit('dnd-game-start');
+      window.dnd.emitter.emit('dnd-game-start-choice');
     }, 500);
 
+  });
+
+  $('.game-classes').on('click', '.game-classes__item', function(){
+    let $gameClasses = $('.game-classes'),
+      $gameLoader = $('.game-loader');
+
+    $gameClasses.addClass('fadeUp');
+    setTimeout(function(){
+      $gameClasses.hide();
+
+      $gameLoader.show();
+      $gameLoader.addClass('fadeIn');
+
+      window.dnd.emitter.emit('dnd-choice-made', $(this).data('id'));
+    }, 500);
   });
 
 });

@@ -24,6 +24,14 @@ export default class GameController {
 
     });
 
+    window.dnd.emitter.on('dnd-game-start-choice', function(){
+      // Show all classes
+
+      let allClassUrl = `${_self.API_ENDPOINT}${API_START}`;
+      _self.getShowAllClasses(allClassUrl);
+
+    });
+
     window.dnd.emitter.on('dnd-choice-made', function(choiceId){
 
       let dndClassUrl = `${_self.API_ENDPOINT}${API_START}/${choiceId}`;
@@ -73,6 +81,15 @@ export default class GameController {
       console.error('Error: API endpoint not defined');
       return;
     }
+  }
+
+  getShowAllClasses(classUrl) {
+    let _self = this;
+
+    $.ajax(_self.getSettings(classUrl)).done((data) => {
+      console.log(data);
+
+    });
   }
 
   getShowClass(classUrl) {
