@@ -39,7 +39,7 @@ block content
 
             // data.class = 'Barbarian'
             // data.hp = '11'
-            // data.subclass = '...'
+            // data.subclass = 'For some barbarians, rage is a means to an end— that end being violence. The Path of the Berserker is a path of untrammeled fury, slick with blood. As you enter the berserker’s rage, you thrill in the chaos of battle, heedless of your own health or well-being.'
             // data.proficiency = ["Light armor", "Medium armor", "Shields", "Simple weapons", "Martial weapons"]
             // data.proficiencyChoices = ["Skill: Animal Handling", "Skill: Athletics", "Skill: Intimidation", "Skill: Nature", "Skill: Perception", "Skill: Survival"]
             // data.startingItem = ["Explorer's Pack", "Javelin"]
@@ -54,6 +54,20 @@ block content
             data.startingItem = ["{{=it.starting_equipment.url}}"]
             data.savingThrows = ["{{=savingThrows.name}}"]
 
-          | <script id="class-card-template" type="text/template">
+          if isTemplate === true
+            | <script id="class-card-template" type="text/template">
           +card({"data": data, "isTemplate": isTemplate})
-          | </script>
+
+          if isTemplate === true
+
+
+          -
+            var data = {}
+
+            data.id = 'starting-item-input'
+            data.index = {{=index}}
+
+          if isTemplate === true
+            | <script id="class-card-select-template" type="text/template">
+            +cardInput({"data": data})
+            | </script>

@@ -56,14 +56,18 @@ mixin card(spec)
             - each item in spec.data.startingItem
               .chip=item
 
-        .row
-          .input-field.col.s12
-            input#starting-item-input-1.autocomplete(type='text')
-            label(for='starting-item-input-1') Choice 1
+          .row
+            if spec.isTemplate === false
+              -
+                var data = {}
+                data.id = 'starting-item-input'
+                data.index = '1'
 
-          .input-field.col.s12
-            input#starting-item-input-2.autocomplete(type='text')
-            label(for='starting-item-input-2') Choice 2
+              +cardInput(data)
+
+              -
+                data.index = '2'
+              +cardInput(data)
 
     .card-content.white-text
       .divider
@@ -83,4 +87,14 @@ mixin card(spec)
       a.waves-effect.waves-light.btn-large
         i.material-icons.right keyboard_arrow_right
         | Procees with your class
+
+
+mixin cardInput(spec)
+  - spec = spec || {}
+  - spec.id = spec.id || 'item-input'
+  - spec.index = spec.index || '1'
+
+  .input-field.col.s12
+    input.autocomplete(id=`${spec.id}-${spec.index}`, type='text')
+    label(for=`${spec.id}-${spec.index}`)=`Choice ${spec.index}`
 
