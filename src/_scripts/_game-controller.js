@@ -1,7 +1,6 @@
 'use strict';
 
 import $ from 'jquery';
-import List from 'list.js';
 import doT from 'doT';
 
 import Card from 'card/card';
@@ -45,7 +44,7 @@ export default class GameController {
 
   getSettings(apiUrl) {
     return {
-      url: 'https://crossorigin.me/' + apiUrl,
+      url: apiUrl,
       type: 'GET',
       cache: true,
       timeout: 10000,
