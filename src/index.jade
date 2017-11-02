@@ -25,9 +25,14 @@ block content
           .progress
             .indeterminate
 
-    section.game-classes
-      .row
+    section.game-classes(style="display: none;")
+      .row.game-classes__instructions(style="display: none;")
         .col.s12.m8.offset-m2
+          h1.t-l
+            | Select a class for your character:
+
+      .row
+        .col.s12.m8.offset-m2.game-classes__container(style="display: none;")
 
 
     section.game-class(style="display: none;")

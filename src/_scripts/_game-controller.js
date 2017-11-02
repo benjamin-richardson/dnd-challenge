@@ -89,6 +89,21 @@ export default class GameController {
     $.ajax(_self.getSettings(classUrl)).done((data) => {
       console.log(data);
 
+      // Transition in game containers
+      $('.game-classes').show();
+      $('.game-classes__instructions').fadeIn('800');
+
+      let dndClassChoiceHtml = '';
+
+      data.results.forEach(function(dndClass){
+        dndClassChoiceHtml += `<a class="chip" data-api-endpoint="${dndClass.url}">${dndClass.name}</a>`;
+      });
+
+      let $gameContainer = $('.game-classes__container');
+      $gameContainer.html(dndClassChoiceHtml);
+      $gameContainer.fadeIn();
+      $('.game-loader').css('opacity', '0');
+
     });
   }
 
