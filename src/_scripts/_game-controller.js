@@ -70,6 +70,17 @@ export default class GameController {
           // Display second round content
           console.log('startingEquipmentApi', data);
 
+          // Add in default starting items
+          let defaultStartingEquipmentHtml = '';
+          data.starting_equipment.forEach(element => {
+            defaultStartingEquipmentHtml += `<div class="chip">${element.item.name} x ${element.quantity}</div>`;
+          });
+
+          $('.starting-equipment').prepend(defaultStartingEquipmentHtml);
+
+
+          // Add in choices
+
         });
 
       });
