@@ -45,7 +45,7 @@ export default class GameController {
 
   getSettings(apiUrl) {
     return {
-      url: apiUrl,
+      url: 'https://crossorigin.me/' + apiUrl,
       type: 'GET',
       cache: true,
       timeout: 10000,
