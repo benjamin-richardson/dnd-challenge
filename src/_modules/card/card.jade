@@ -42,7 +42,7 @@ mixin card(spec)
           | {{~it.proficiency_choices[0].from :proficiencyChoices:index}}
 
         - each item in spec.data.proficiencyChoices
-          .chip=item
+          a(href="#").chip=item
 
         if spec.isTemplate === true
           | {{~}}

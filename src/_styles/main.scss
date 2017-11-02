@@ -55,6 +55,19 @@
   opacity: 0;
 }
 
+.game-classes__container {
+  .chip {
+    height: auto;
+    padding: 12px 24px;
+  }
+}
+
+a.chip {
+  &:hover, &:focus {
+    background-color: darken(#e4e4e4, 10%);
+  }
+}
+
 .fadeUp {
   transform: translateY(-25px);
   opacity: 0;
