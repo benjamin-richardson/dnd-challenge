@@ -56,7 +56,7 @@ mixin card(spec)
             - each item in spec.data.startingItem
               .chip=item
 
-          .row
+          .row.starting-equipment__selects
             if spec.isTemplate === false
               -
                 var data = {}

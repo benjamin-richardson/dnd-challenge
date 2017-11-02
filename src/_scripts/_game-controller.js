@@ -66,6 +66,8 @@ export default class GameController {
         let subclassApi = $('.subclass').data('api-endpoint') || '';
         $.ajax(_self.getSettings(subclassApi)).done((data) => {
           // Display second round content
+          console.log('subclassApi', data);
+
           $('.subclass').text(data.desc[0]);
         });
 
@@ -88,17 +90,30 @@ export default class GameController {
             dropDownData = [];
 
           // Add in choices
-          for(let i = 1; i <= data.choices_to_make; i++) {
-            startingEquipmentChoices += _self.classCardSelectTemplate({'index': String(i)});
+          for(let i = 0; i <= data.choices_to_make; i++) {
+            let indexString = String(i+1);
+            if(data[`choice_${indexString}`] !== undefined) {
+              startingEquipmentChoices += _self.classCardSelectTemplate({'index': indexString});
 
-            if(data[`choice_${i}`] !== undefined) {
-              dropDownData = data[`choice_${i}`].reduce(function(concatArrays, choices) {
+              dropDownData = data[`choice_${indexString}`].reduce(function(concatArrays, choices) {
                 return choices.from.concat(concatArrays);
               },[]);
             }
 
             choiceInitValues.push(dropDownData);
           }
+
+          // Set up select and initialise
+          $('.starting-equipment .starting-equipment__selects').html(startingEquipmentChoices);
+          choiceInitValues.forEach(function(equipment, index) {
+            let dropDownDataFormatted = {};
+
+            equipment.forEach(function(item){
+              dropDownDataFormatted[item.item.name] = null;
+            });
+
+            _self.cardClass.initialiseInput($('#starting-item-input-' + (index + 1)), dropDownDataFormatted);
+          });
 
         });
 

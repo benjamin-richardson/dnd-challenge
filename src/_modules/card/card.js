@@ -21,7 +21,7 @@ export default class Card {
 
   initialiseInput($node, data) {
     // Initialise Auto Complete
-    node.autocomplete({
+    $node.autocomplete({
       data: data,
       limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
       onAutocomplete: function(val) {
